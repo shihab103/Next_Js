@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import Link from "next/link";
 import React from "react";
 
@@ -6,8 +6,8 @@ const NavBar = () => {
   const links = (
     <div className="flex gap-3">
       <Link href="/">Home</Link>
-      <Link href="/login">Login</Link>
-      <Link href="/register">Register</Link>
+      <Link href="/services">Services</Link>
+      <Link href="/about">About</Link>
     </div>
   );
   return (
@@ -38,7 +38,7 @@ const NavBar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="font-bold text-xl"><span className="text-pink-500">N</span>ext Js</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
