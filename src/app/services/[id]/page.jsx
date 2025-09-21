@@ -1,8 +1,10 @@
-import Link from "next/link";
 import React from "react";
 
-const ServicesPage = () => {
-    const data = [
+// Next.js App Router automatically injects { params } into the component props
+const ServiceDetailsPage = ({ params }) => {
+  const id = params.id;
+
+  const data = [
     {
       _id: "64f1a3b2e9a1c2d3f4b5a001",
       service_name: "Cafe Banner Photoshoot",
@@ -63,32 +65,29 @@ const ServicesPage = () => {
     },
   ];
 
-  return (
-    <div className=" mx-auto p-6">
-      <p className="font-bold text-2xl text-center mb-6">Services Page</p>
+  const singleData = data.find((d) => d._id === id);
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data.map((d) => (
-          <div
-            key={d._id}
-            className="border rounded-xl shadow p-4 hover:shadow-lg transition"
-          >
-            <Link href={`/services/${d._id}`}>
-              <img
-                src={d.service_image}
-                alt={d.service_name}
-                className="w-full h-56 object-cover rounded-md"
-              />
-              <h2 className="mt-4 text-xl font-semibold">{d.service_name}</h2>
-              <p className="text-sm text-gray-600 mt-2">
-                {d.service_description}
-              </p>
-            </Link>
-          </div>
-        ))}
+  if (!singleData) {
+    return (
+      <div className="p-6 text-center">
+        <h1 className="text-2xl font-bold">Service Not Found</h1>
+        <p>No service found with ID: {id}</p>
       </div>
+    );
+  }
+
+  return (
+    <div className="max-w-3xl mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-4">{singleData.service_name}</h1>
+      <img
+        src={singleData.service_image}
+        alt={singleData.service_name}
+        className="w-full h-72 object-cover rounded-lg shadow"
+      />
+      <p className="mt-4 text-gray-700">{singleData.service_description}</p>
+      <p className="mt-6 text-sm text-gray-500">Service ID: {id}</p>
     </div>
   );
 };
 
-export default ServicesPage;
+export default ServiceDetailsPage;

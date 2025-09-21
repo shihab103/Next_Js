@@ -8,6 +8,7 @@ const NavBar = () => {
       <Link href="/">Home</Link>
       <Link href="/services">Services</Link>
       <Link href="/about">About</Link>
+      <Link href="/about/address">Address</Link>
     </div>
   );
   return (
@@ -38,7 +39,9 @@ const NavBar = () => {
             {links}
           </ul>
         </div>
-        <a className="font-bold text-xl"><span className="text-pink-500">N</span>ext Js</a>
+        <a className="font-bold text-xl">
+          <span className="text-pink-500">N</span>ext Js
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
